@@ -1,0 +1,58 @@
+<app-header-login></app-header-login>
+<div class="flex-container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0"
+    class = "main"
+    >
+
+    <div fxFlex="20" fxFlexOffset = "60" class = "login">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title class = "title">Welcome Back!</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-error *ngIf="formErrors.main">{{formErrors.main}}</mat-error>
+            <form class="form-size" novalidate  [formGroup]="loginForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+              <p>
+                <mat-form-field class="full-width">
+                  <input matInput formControlName="username" placeholder="Username" type="text" required>
+                  <!-- <mat-error >{{formErrors.author}}</mat-error> -->
+                  <mat-error *ngIf="formErrors.username">{{formErrors.username}}</mat-error> 
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName="password" placeholder="Password" type="password" required>
+                    <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error> 
+                    <!-- <mat-error >{{formErrors.author}}</mat-error> -->
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field  class="full-width">
+                  <mat-label>Type</mat-label>
+                  <mat-select formControlName="type" required>
+                    <mat-option value="admin">Admin</mat-option>
+                    <mat-option value="controller">Controller</mat-option>
+                    <mat-option value="hod">HOD</mat-option>
+                    <mat-option value="professor">Professor</mat-option>
+                    
+                  </mat-select>
+                  <mat-error *ngIf="formErrors.type">{{formErrors.type}}</mat-error> 
+                </mat-form-field>
+              </p>
+              <button [disabled]="!loginForm.valid"  type="submit" color = "primary"  mat-raised-button class="background-primary text-floral-white full-width">Log in</button>
+            </form>
+            <div class = "register">
+              New to portal? <a class = "register1" [routerLink]="['/register']">Register</a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+    </div>
+    
+
+</div>
+

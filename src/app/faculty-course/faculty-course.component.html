@@ -1,0 +1,117 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="_toggleSidebar()">
+        <span class = "material-icons">toc</span>
+    </button>
+    <button mat-button class = "right">
+      Profile
+    </button>
+    <button mat-button class = "right">
+      Log out
+    </button>
+  </mat-toolbar>
+  <ng-sidebar-container>
+
+    <!-- A sidebar -->
+    <ng-sidebar [(opened)]="_opened">
+      <p>Sidebar contents</p>
+    </ng-sidebar>
+
+    <!-- Page content -->
+    <div class = "main" ng-sidebar-content (click)="_toggleSidebar_close()">
+        <div class = "details">
+            Dee
+        </div>
+            <table class = "table">
+                <thead>
+                    <tr>
+                        <th> S. No.</th>
+                        <th> Enrollment Id. </th>
+                        <th> Name </th>
+                        <th> Internal Marks </th>
+                        <th> End Semester </th>
+                        <th> Total </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let data of dataSource; let i = index">
+                        <td> {{i+1}} </td>
+                        <td *ngIf = "i+1===editRowId && 2===editColId">
+                            <input class = "no-border" type="number"  [(ngModel)] = "data.enroll_id" >  
+                        </td>
+                        <td *ngIf = "i+1!==editRowId || 2!==editColId" (click) = "edit(i+1,2)">{{data.enroll_id}}</td>
+                        <td *ngIf = "i+1===editRowId && 3===editColId">
+                            <input class = "no-border" type="text"  [(ngModel)] = "data.name" >  
+                        </td>
+                        <td *ngIf = "i+1!==editRowId || 3!==editColId" (click) = "edit(i+1,3)">{{data.name}}</td>
+                        <td *ngIf = "i+1===editRowId && 4===editColId">
+                            <input class = "no-border" type="number"  [(ngModel)] = "data.internal" >  
+                        </td>
+                        <td *ngIf = "i+1!==editRowId || 4!==editColId" (click) = "edit(i+1,4)">{{data.internal}}</td>
+                        <td *ngIf = "i+1===editRowId && 5===editColId">
+                            <input class = "no-border" type="number"  [(ngModel)] = "data.final" >  
+                        </td>
+                        <td *ngIf = "i+1!==editRowId || 5!==editColId" (click) = "edit(i+1,5)">{{data.final}}</td>
+                        <td>{{data.final+data.internal}}</td>
+
+                    </tr>
+            
+                </tbody>
+            </table>
+            <button  color = "primary"  mat-raised-button class="background-primary text-floral-white save" (click) = "save()">Save</button>
+            <button   color = "primary"  mat-raised-button class="background-primary text-floral-white submit" (click) = "submit()">Submit</button>
+            <form class="form-size" novalidate  [formGroup]="tableForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput formControlName = "enroll_id" placeholder="Enrollment" type="number" required>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput formControlName = "name" placeholder="Name" type="text" required>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput formControlName = "internal" placeholder="Internal Marks" type="number" required>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput formControlName = "final" placeholder="End Semester" type="number" required>
+                                </mat-form-field>
+                            </td>
+                            <td><button   type="submit" color = "primary"  mat-raised-button class="background-primary text-floral-white full-width">Add</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+        <!-- <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav> -->
+          
+
+          
+          
+           
+    </div>
+
+  </ng-sidebar-container>

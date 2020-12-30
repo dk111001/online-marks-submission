@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="_toggleSidebar()">
+        <span class = "material-icons">toc</span>
+    </button>
+    <button mat-button class = "right">
+      Profile
+    </button>
+    <button mat-button class = "right">
+      Log out
+    </button>
+  </mat-toolbar>
+  <ng-sidebar-container>
+
+    <!-- A sidebar -->
+    <ng-sidebar [(opened)]="_opened" class = "outer">
+        <mat-list class = "list">
+            <mat-list-item class = "border_bottom"> Home  </mat-list-item>
+            <mat-list-item class = "border_bottom" *ngFor = "let semester of semesters"> {{semester}}  </mat-list-item>
+
+           </mat-list>
+    </ng-sidebar>
+
+    <!-- Page content -->
+    <div class = "main" ng-sidebar-content (click)="_toggleSidebar_close()">
+      <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+          
+        </div>
+        </div>        
+    </div>
+
+  </ng-sidebar-container>

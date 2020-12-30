@@ -1,0 +1,56 @@
+<app-header-login></app-header-login>
+<div class="flex-container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0"
+    class = "main"
+    >
+
+    <div fxFlex="20" fxFlexOffset = "20" class = "login">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title class = "title">Register</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+
+            <form class="form-size" novalidate  [formGroup]="registerForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+              <p>
+                <mat-form-field class="full-width">
+                  <input matInput formControlName="institute_id" placeholder="Institute Id." type="text" required>
+                  <!-- <mat-error >{{formErrors.author}}</mat-error> -->
+                  <!-- <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error> -->
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                  <input matInput formControlName="username" placeholder="Username" type="text" required>
+                  <!-- <mat-error >{{formErrors.author}}</mat-error> -->
+                  <!-- <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error> -->
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName="password" placeholder="Password" type="password" required>
+                    <!-- <mat-error >{{formErrors.author}}</mat-error> -->
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="full-width">
+                    <input matInput formControlName="confirm_password" placeholder="Confirm Password" type="password" required>
+                    <!-- <mat-error >{{formErrors.author}}</mat-error> -->
+                </mat-form-field>
+              </p>
+              <button  type="submit" color = "primary"  mat-raised-button class="background-primary text-floral-white full-width">Register</button>
+            </form>
+            <div class = "register">
+              Already have an account? <a class = "register1" [routerLink]="['/login']">Log in</a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+    </div>
+    
+
+</div>

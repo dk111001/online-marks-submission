@@ -1,0 +1,44 @@
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="_toggleSidebar()">
+        <span class = "material-icons">toc</span>
+    </button>
+    <button mat-button class = "right">
+      Profile
+    </button>
+    <button mat-button class = "right">
+      Log out
+    </button>
+  </mat-toolbar>
+  <ng-sidebar-container>
+
+    <!-- A sidebar -->
+    <ng-sidebar [(opened)]="_opened">
+      <p>Sidebar contents</p>
+    </ng-sidebar>
+
+    <!-- Page content -->
+    <div class = "main" ng-sidebar-content (click)="_toggleSidebar_close()">
+      <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+          <div fxFlex="23%" *ngFor="let data of courseData">
+            <mat-card class="mat-elevation-z4" >
+              <mat-card-header>
+                <mat-card-title><a [routerLink]="['/faculty/course']">{{data.name}}</a></mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src="./../assets/images/mountains.jpg">
+              <mat-card-content>
+                <p>
+                  The Himalayas is a mountain range in Asia.
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+        </div>        
+    </div>
+
+  </ng-sidebar-container>

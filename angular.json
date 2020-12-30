@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MarkSubmission-Angular"
+    }
+  },
+  "defaultProject": "MarkSubmission-Angular",
+  "cli": {
+    "analytics": false
+  }
 }
