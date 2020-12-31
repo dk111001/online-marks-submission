@@ -36,10 +36,24 @@ import { ControllerHomeComponent } from './controller-home/controller-home.compo
 import { HeaderFacultyComponent } from './header-faculty/header-faculty.component';
 
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule,} from '@angular/fire/firestore'
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+
+import { FacultyCourseComponent } from './faculty-course/faculty-course.component';
+import { HodCourseComponent } from './hod-course/hod-course.component';
+
 
 import { FacultyService } from './services/faculty.service';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
-import { FacultyCourseComponent } from './faculty-course/faculty-course.component';
+import { FacultyCourseService } from './services/faculty-course.service';
+import { HodDepartmentComponent } from './hod-department/hod-department.component';
+import { ControllerDepartmentComponent } from './controller-department/controller-department.component';
+import { ControllerCourseComponent } from './controller-course/controller-course.component'
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +66,11 @@ import { FacultyCourseComponent } from './faculty-course/faculty-course.componen
     HodHomeComponent,
     ControllerHomeComponent,
     HeaderFacultyComponent,
-    FacultyCourseComponent
+    FacultyCourseComponent,
+    HodCourseComponent,
+    HodDepartmentComponent,
+    ControllerDepartmentComponent,
+    ControllerCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -78,11 +96,16 @@ import { FacultyCourseComponent } from './faculty-course/faculty-course.componen
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
+    
   ],
   providers: [
     FacultyService,
-    ProcessHTTPMsgService
+    ProcessHTTPMsgService,
+    FacultyCourseService
   ],
   bootstrap: [AppComponent]
 })

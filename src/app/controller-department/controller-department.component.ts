@@ -6,43 +6,13 @@ import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-
-
-export interface Department{
-  name: string;
-  professor_id: number;
-  professor_name: string;
-  department_code: string;
-}
-
-export interface course {
-  name: string;
-  professor_id: number;
-  professor_name: string;
-  department_code: string;
-  semester: number;
-}
-
 @Component({
-  selector: 'app-hod-home',
-  templateUrl: './hod-home.component.html',
-  styleUrls: ['./hod-home.component.scss']
+  selector: 'app-controller-department',
+  templateUrl: './controller-department.component.html',
+  styleUrls: ['./controller-department.component.scss']
 })
-export class HodHomeComponent implements OnInit {
+export class ControllerDepartmentComponent implements OnInit {
   _opened: boolean = false;
-
-  departments : Department[] = [
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"},
-    {name : 'Information Technology',professor_id : 8,professor_name : "SD",department_code:"IT"}
-    
-  ];
   currentData : Course[];
   courseData : Course[];
   semesters = ['1st Year','2nd Year','3rd Year','4th Year'];
@@ -56,7 +26,7 @@ export class HodHomeComponent implements OnInit {
     private route: ActivatedRoute,) { 
       //console.log(this.param);
       this.route.paramMap.subscribe(params => {
-        this.param = Number(params.get('id'))/1000;
+        this.param = Number(params.get('id'));
       });
     
   }
@@ -74,10 +44,6 @@ export class HodHomeComponent implements OnInit {
           this.courseData = items;
           console.log(items);
         });
-  }
-
-  onSubmit(){
-    this.router.navigate(['register'], { relativeTo: this.route });
   }
 
   _toggleSidebar() {

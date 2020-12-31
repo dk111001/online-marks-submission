@@ -100,9 +100,9 @@ export class LoginComponent implements OnInit {
       type: this.login.password
     });
   if(this.login.type == 'professor')
-      this.router.navigate(['faculty']);
+      this.router.navigate(['faculty',this.login.username]);
     else if(this.login.type == 'hod')
-      this.router.navigate(['hod']);
+      this.router.navigate(['hod',this.login.username]);
     else if(this.login.type=='controller')
       this.router.navigate(['controller',this.login.username]);
     

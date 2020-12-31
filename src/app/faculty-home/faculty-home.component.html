@@ -23,12 +23,12 @@
           <div fxFlex="23%" *ngFor="let data of courseData">
             <mat-card class="mat-elevation-z4" >
               <mat-card-header>
-                <mat-card-title><a [routerLink]="['/faculty/course']">{{data.name}}</a></mat-card-title>
+                <mat-card-title><a [routerLink]="['course',data.id]">{{data.name}} {{param}}</a></mat-card-title>
               </mat-card-header>
               <img mat-card-image src="./../assets/images/mountains.jpg">
               <mat-card-content>
                 <p>
-                  The Himalayas is a mountain range in Asia.
+                  {{data.id}}
                 </p>
               </mat-card-content>
               <mat-card-actions>

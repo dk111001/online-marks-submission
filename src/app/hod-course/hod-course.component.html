@@ -1,0 +1,31 @@
+<div class = "main">
+    <div class = "details">
+        Dee
+    </div>
+        <table class = "table">
+            <thead>
+                <tr>
+                    <th> S. No.</th>
+                    <th> Enrollment Id. </th>
+                    <th> Name </th>
+                    <th> Internal Marks </th>
+                    <th> End Semester </th>
+                    <th> Total </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let data of dataSource; let i = index">
+                    <td> {{i+1}} </td>
+                    <td>{{data.enroll_id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.internal}}</td>
+                    <td>{{data.final}}</td>
+                    <td>{{data.final+data.internal}}</td>
+
+                </tr>
+        
+            </tbody>
+        </table>
+      
+       
+</div>

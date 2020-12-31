@@ -18,8 +18,10 @@
 
     <!-- Page content -->
     <div class = "main" ng-sidebar-content (click)="_toggleSidebar_close()">
-        <div class = "details">
-            Dee
+        <div class = "details rounded">
+            <div *ngIf = "courseData">
+                {{courseData.name}}
+            </div>
         </div>
             <table class = "table">
                 <thead>
@@ -52,6 +54,9 @@
                         </td>
                         <td *ngIf = "i+1!==editRowId || 5!==editColId" (click) = "edit(i+1,5)">{{data.final}}</td>
                         <td>{{data.final+data.internal}}</td>
+                        <td (click) = "delete(data.id)"><span class="material-icons">
+                            clear
+                            </span></td>
 
                     </tr>
             
